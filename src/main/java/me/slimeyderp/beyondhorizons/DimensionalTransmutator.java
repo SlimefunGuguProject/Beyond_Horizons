@@ -22,7 +22,7 @@ public abstract class DimensionalTransmutator extends AContainer implements Reci
     @Override
     protected void registerDefaultRecipes() {
         registerRecipe(8, new ItemStack[]{SlimefunItems.REACTOR_COOLANT_CELL}, new ItemStack[]{SlimefunItems.NETHER_ICE_COOLANT_CELL});
-        registerRecipe(8, new ItemStack[]{SlimefunItems.NETHER_ICE_COOLANT_CELL}, new ItemStack[]{ItemStacks.SuperChargedCoolantCellStack});
+        registerRecipe(8, new ItemStack[]{SlimefunItems.NETHER_ICE_COOLANT_CELL}, new ItemStack[]{ItemStacks.SUPER_CHARGED_COOLANT_CELL_STACK});
     }
 
     @Override

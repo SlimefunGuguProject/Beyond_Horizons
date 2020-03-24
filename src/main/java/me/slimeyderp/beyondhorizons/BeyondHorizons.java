@@ -8,7 +8,7 @@ public class BeyondHorizons extends JavaPlugin implements SlimefunAddon {
     @Override
     public void onEnable() {
         registerItems();
-        getLogger().info("Beyond-Horizons Add-on by SlimeyDerp: Add-on Loaded Successfully! :D");
+        getLogger().info("Beyond-Horizons has loaded Sucessfully!");
     }
 
     @Override
