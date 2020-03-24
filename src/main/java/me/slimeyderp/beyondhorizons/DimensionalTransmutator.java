@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class DimensionalTransmutator extends AContainer implements RecipeDisplayItem {
+public class DimensionalTransmutator extends AContainer implements RecipeDisplayItem {
 
     DimensionalTransmutator(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
@@ -23,6 +23,16 @@ public abstract class DimensionalTransmutator extends AContainer implements Reci
     protected void registerDefaultRecipes() {
         registerRecipe(8, new ItemStack[]{SlimefunItems.REACTOR_COOLANT_CELL}, new ItemStack[]{SlimefunItems.NETHER_ICE_COOLANT_CELL});
         registerRecipe(8, new ItemStack[]{SlimefunItems.NETHER_ICE_COOLANT_CELL}, new ItemStack[]{ItemStacks.SUPER_CHARGED_COOLANT_CELL_STACK});
+    }
+
+    @Override
+    public int getEnergyConsumption() {
+        return 150;
+    }
+
+    @Override
+    public int getSpeed() {
+        return 1;
     }
 
     @Override
