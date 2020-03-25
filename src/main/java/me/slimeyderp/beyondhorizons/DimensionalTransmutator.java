@@ -23,6 +23,8 @@ public class DimensionalTransmutator extends AContainer implements RecipeDisplay
     protected void registerDefaultRecipes() {
         registerRecipe(8, new ItemStack[]{SlimefunItems.REACTOR_COOLANT_CELL}, new ItemStack[]{SlimefunItems.NETHER_ICE_COOLANT_CELL});
         registerRecipe(8, new ItemStack[]{SlimefunItems.NETHER_ICE_COOLANT_CELL}, new ItemStack[]{ItemStacks.SUPER_CHARGED_COOLANT_CELL_STACK});
+        registerRecipe(8, new ItemStack[]{SlimefunItems.URANIUM}, new ItemStack[]{ItemStacks.RAW_AETHER_STACK});
+        registerRecipe(8, new ItemStack[]{ItemStacks.ETHERIUM_STACK}, new ItemStack[]{ItemStacks.UNSTABLE_ETHERIUM_STACK});
     }
 
     @Override
