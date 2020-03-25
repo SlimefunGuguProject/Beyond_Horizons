@@ -9,4 +9,5 @@ class ItemStacks {
     public static final SlimefunItemStack RAW_AETHER_STACK = new SlimefunItemStack("RAW_AETHER", "9c425ea9c4a4cbd123a9ffd4a0ba7480e7c515423dd730fb9fb643c18490107f", "§1Raw Aether Ore", "", "Pure essence of another world");
     public static final SlimefunItemStack DIMENSIONAL_TRANSMUTATOR_STACK = new SlimefunItemStack("DIMENSIONAL_TRANSMUTATOR", Material.RED_STAINED_GLASS, "§dDimensional Transmutator", "", "§4End-Game Machine", "&8\u21E8 &7Speed: 1x", "&8\u21E8 §bPower Buffer: 2560", "&8\u21E8 §b300 J/S");
     public static final SlimefunItemStack UNSTABLE_ETHERIUM_STACK = new SlimefunItemStack("UNSTABLE_ETHERIUM", "2342b9bf9f1f6295842b0efb591697b14451f803a165ae58d0dcebd98eacc", "&1Unstable Etherium", "", "&4WARNING: Running with this unstable", "&4material is asking for your death.", "&4You have been warned!");
+    public static final SlimefunItemStack ETHERIAL_BALANCE_ROD_STACK = new SlimefunItemStack("ETHERIAL_BALANCE_ROD_STACK", Material.STICK, "&eEtherial Balance Rod", "", "&Destroy your enemies with mystical powers!");
 }

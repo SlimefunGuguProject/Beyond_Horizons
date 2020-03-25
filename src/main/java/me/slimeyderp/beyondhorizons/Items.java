@@ -9,4 +9,6 @@ class Items {
     public static final SlimefunItem RAW_AETHER = new SlimefunItem(ExtraCategory.CUSTOM_CATEGORY, ItemStacks.RAW_AETHER_STACK, RecipeType.NULL, ItemRecipes.EmptyRecipe);
     public static final DimensionalTransmutator DIMENSIONAL_TRANSMUTATOR = new DimensionalTransmutator(ExtraCategory.CUSTOM_CATEGORY, ItemStacks.DIMENSIONAL_TRANSMUTATOR_STACK, RecipeType.ENHANCED_CRAFTING_TABLE, ItemRecipes.DimensionalTransmutatorRecipe);
     public static final SlimefunItem UNSTABLE_ETHERIUM = new SlimefunItem(ExtraCategory.CUSTOM_CATEGORY, ItemStacks.UNSTABLE_ETHERIUM_STACK, RecipeType.NULL, ItemRecipes.EmptyRecipe);
+    public static final SlimefunItem ETHERIAL_BALANCE_ROD = new SlimefunItem(ExtraCategory.CUSTOM_CATEGORY, ItemStacks.ETHERIAL_BALANCE_ROD_STACK, RecipeType.ENHANCED_CRAFTING_TABLE, ItemRecipes.EtherialBalanceRodRecipe);
+
 }

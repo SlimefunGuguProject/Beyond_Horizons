@@ -1,22 +1,24 @@
 package me.slimeyderp.beyondhorizons;
 
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerToggleSprintEvent;
-import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class BeyondHorizons extends JavaPlugin implements SlimefunAddon, Listener {
 
     @Override
     public void onEnable() {
-
         RegisterItems();
-        Bukkit.getPluginManager().registerEvents(this, this);
+        AddingEnchantments();
+        RewritingTheWholeCode();
+        FailingToRewriteTheCode();
+        TestingCatBazookas();
+        RealizingItsABadIdea();
+        HidingEasterEggs();
+        PingingTheBusyBiscuit();
+        new SpecialItemListener(this);
         getLogger().info("Beyond-Horizons has loaded Sucessfully!");
     }
 
@@ -37,21 +39,43 @@ public class BeyondHorizons extends JavaPlugin implements SlimefunAddon, Listene
     }
 
     private void RegisterItems() {
+
         Items.ETHERIUM.register(this);
         Items.SUPER_CHARGED_COOLANT_CELL.register(this);
         Items.RAW_AETHER.register(this);
         Items.DIMENSIONAL_TRANSMUTATOR.register(this);
         Items.UNSTABLE_ETHERIUM.register(this);
+        Items.ETHERIAL_BALANCE_ROD.register(this);
     }
 
-    @EventHandler
-    public void isSprinting(PlayerToggleSprintEvent event) {
-        Player p = event.getPlayer();
-        if (p.getInventory().containsAtLeast(ItemStacks.UNSTABLE_ETHERIUM_STACK, 1)) {
-            PlayerInventory playerInventory = p.getInventory();
-            Location loc = p.getLocation();
-            loc.getWorld().createExplosion(loc, 12F);
-            playerInventory.removeItem(ItemStacks.UNSTABLE_ETHERIUM_STACK);
-        }
+    private void AddingEnchantments() {
+        ItemMeta ETHERIAL_BALANCE_ROD_META = ItemStacks.ETHERIAL_BALANCE_ROD_STACK.getItemMeta();
+        ETHERIAL_BALANCE_ROD_META.addEnchant(Enchantment.KNOCKBACK, 5, true);
+        ItemStacks.ETHERIAL_BALANCE_ROD_STACK.setItemMeta(ETHERIAL_BALANCE_ROD_META);
+        getLogger().info("Cleaning the dustbins...");
+    }
+
+    private void RewritingTheWholeCode() {
+        getLogger().info("Rewriting the whole add-on..");
+    }
+
+    private void FailingToRewriteTheCode() {
+        getLogger().info("Failing to re-write the whole add-on...");
+    }
+
+    private void TestingCatBazookas() {
+        getLogger().info("Testing Cat Bazookas...");
+    }
+
+    private void RealizingItsABadIdea() {
+        getLogger().info("Realizing it's a bad idea...");
+    }
+
+    private void HidingEasterEggs() {
+        getLogger().info("Hiding Easter Eggs...");
+    }
+
+    private void PingingTheBusyBiscuit() {
+        getLogger().info("Pinging TheBusyBiscuit...");
     }
 }
