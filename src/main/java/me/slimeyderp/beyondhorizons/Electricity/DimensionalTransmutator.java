@@ -1,4 +1,4 @@
-package me.slimeyderp.beyondhorizons;
+package me.slimeyderp.beyondhorizons.Electricity;
 
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
@@ -7,6 +7,7 @@ import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import me.slimeyderp.beyondhorizons.Materials.CustomItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -15,16 +16,17 @@ import java.util.List;
 
 public class DimensionalTransmutator extends AContainer implements RecipeDisplayItem {
 
-    DimensionalTransmutator(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public DimensionalTransmutator(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
     }
 
     @Override
     protected void registerDefaultRecipes() {
         registerRecipe(8, new ItemStack[]{SlimefunItems.REACTOR_COOLANT_CELL}, new ItemStack[]{SlimefunItems.NETHER_ICE_COOLANT_CELL});
-        registerRecipe(8, new ItemStack[]{SlimefunItems.NETHER_ICE_COOLANT_CELL}, new ItemStack[]{ItemStacks.SUPER_CHARGED_COOLANT_CELL_STACK});
-        registerRecipe(8, new ItemStack[]{SlimefunItems.URANIUM}, new ItemStack[]{ItemStacks.RAW_AETHER_STACK});
-        registerRecipe(8, new ItemStack[]{ItemStacks.ETHERIUM_STACK}, new ItemStack[]{ItemStacks.UNSTABLE_ETHERIUM_STACK});
+        registerRecipe(8, new ItemStack[]{SlimefunItems.NETHER_ICE_COOLANT_CELL}, new ItemStack[]{CustomItemStack.SUPER_CHARGED_COOLANT_CELL_STACK});
+        registerRecipe(8, new ItemStack[]{SlimefunItems.URANIUM}, new ItemStack[]{CustomItemStack.RAW_AETHER_STACK});
+        registerRecipe(8, new ItemStack[]{CustomItemStack.ETHERIUM_STACK}, new ItemStack[]{CustomItemStack.UNSTABLE_ETHERIUM_STACK});
+        registerRecipe(8, new ItemStack[]{CustomItemStack.UNSTABLE_ETHERIUM_STACK}, new ItemStack[]{CustomItemStack.ETHERIUM_STACK});
     }
 
     @Override

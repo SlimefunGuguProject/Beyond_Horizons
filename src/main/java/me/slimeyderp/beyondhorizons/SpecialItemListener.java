@@ -1,6 +1,7 @@
 package me.slimeyderp.beyondhorizons;
 
 import me.mrCookieSlime.Slimefun.Setup.SlimefunManager;
+import me.slimeyderp.beyondhorizons.Materials.CustomItemStack;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.LivingEntity;
@@ -28,10 +29,10 @@ public class SpecialItemListener implements Listener {
     public void isSprinting(PlayerToggleSprintEvent event) {
         Player p = event.getPlayer();
         PlayerInventory playerInventory = p.getInventory();
-        if (SlimefunManager.containsSimilarItem(playerInventory, ItemStacks.UNSTABLE_ETHERIUM_STACK, true)) {
+        if (SlimefunManager.containsSimilarItem(playerInventory, CustomItemStack.UNSTABLE_ETHERIUM_STACK, true)) {
             for (int i = 0; i < playerInventory.getSize(); i++) {
                 ItemStack stack = playerInventory.getItem(i);
-                if (SlimefunManager.isItemSimilar(stack, ItemStacks.UNSTABLE_ETHERIUM_STACK, true)) {
+                if (SlimefunManager.isItemSimilar(stack, CustomItemStack.UNSTABLE_ETHERIUM_STACK, true)) {
                     playerInventory.setItem(i, null);
                 }
             }
@@ -45,7 +46,7 @@ public class SpecialItemListener implements Listener {
         if (event.getDamager() instanceof Player && event.getEntity() instanceof LivingEntity) {
             Player attacker = (Player) event.getDamager();
             LivingEntity damaged = (LivingEntity) event.getEntity();
-            if (SlimefunManager.isItemSimilar(attacker.getItemInHand(), ItemStacks.ETHERIAL_BALANCE_ROD_STACK, true)) {
+            if (SlimefunManager.isItemSimilar(attacker.getItemInHand(), CustomItemStack.ETHERIAL_BALANCE_ROD_STACK, true)) {
                 damaged.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 3, 60));
                 damaged.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 3, 60));
                 damaged.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 3, 60));

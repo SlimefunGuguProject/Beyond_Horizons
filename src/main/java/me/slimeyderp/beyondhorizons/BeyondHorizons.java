@@ -1,24 +1,27 @@
 package me.slimeyderp.beyondhorizons;
 
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+import me.mrCookieSlime.Slimefun.cscorelib2.updater.BukkitUpdater;
+import me.slimeyderp.beyondhorizons.Materials.CustomItemStack;
+import me.slimeyderp.beyondhorizons.Materials.Items;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.event.Listener;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class BeyondHorizons extends JavaPlugin implements SlimefunAddon, Listener {
+public class BeyondHorizons extends JavaPlugin implements SlimefunAddon {
 
     @Override
     public void onEnable() {
-        RegisterItems();
-        AddingEnchantments();
-        RewritingTheWholeCode();
-        FailingToRewriteTheCode();
-        TestingCatBazookas();
-        RealizingItsABadIdea();
-        HidingEasterEggs();
-        PingingTheBusyBiscuit();
+        registerItems();
+        addingEnchantments();
+        rewritingTheWholeCode();
+        failingToRewriteTheCode();
+        testingCatBazookas();
+        realizingItsABadIdea();
+        hidingEasterEggs();
+        pingingTheBusyBiscuit();
         new SpecialItemListener(this);
+        new BukkitUpdater(this, this.getFile(), 370897);
         getLogger().info("Beyond-Horizons has loaded Sucessfully!");
     }
 
@@ -38,44 +41,48 @@ public class BeyondHorizons extends JavaPlugin implements SlimefunAddon, Listene
         return this;
     }
 
-    private void RegisterItems() {
+    private void registerItems() {
 
         Items.ETHERIUM.register(this);
-        Items.SUPER_CHARGED_COOLANT_CELL.register(this);
-        Items.RAW_AETHER.register(this);
-        Items.DIMENSIONAL_TRANSMUTATOR.register(this);
         Items.UNSTABLE_ETHERIUM.register(this);
         Items.ETHERIAL_BALANCE_ROD.register(this);
+        Items.DIMENSIONAL_TRANSMUTATOR.register(this);
+        Items.DIMENSIONAL_REACTOR.register(this);
+        Items.SUPER_CHARGED_COOLANT_CELL.register(this);
+        Items.RAW_AETHER.register(this);
+        Items.COAL.register(this);
+        Items.COAL_DUST.register(this);
+        Items.COAL_DRILL.register(this);
     }
 
-    private void AddingEnchantments() {
-        ItemMeta ETHERIAL_BALANCE_ROD_META = ItemStacks.ETHERIAL_BALANCE_ROD_STACK.getItemMeta();
+    private void addingEnchantments() {
+        ItemMeta ETHERIAL_BALANCE_ROD_META = CustomItemStack.ETHERIAL_BALANCE_ROD_STACK.getItemMeta();
         ETHERIAL_BALANCE_ROD_META.addEnchant(Enchantment.KNOCKBACK, 5, true);
-        ItemStacks.ETHERIAL_BALANCE_ROD_STACK.setItemMeta(ETHERIAL_BALANCE_ROD_META);
+        CustomItemStack.ETHERIAL_BALANCE_ROD_STACK.setItemMeta(ETHERIAL_BALANCE_ROD_META);
         getLogger().info("Cleaning the dustbins...");
     }
 
-    private void RewritingTheWholeCode() {
+    private void rewritingTheWholeCode() {
         getLogger().info("Rewriting the whole add-on..");
     }
 
-    private void FailingToRewriteTheCode() {
+    private void failingToRewriteTheCode() {
         getLogger().info("Failing to re-write the whole add-on...");
     }
 
-    private void TestingCatBazookas() {
+    private void testingCatBazookas() {
         getLogger().info("Testing Cat Bazookas...");
     }
 
-    private void RealizingItsABadIdea() {
+    private void realizingItsABadIdea() {
         getLogger().info("Realizing it's a bad idea...");
     }
 
-    private void HidingEasterEggs() {
+    private void hidingEasterEggs() {
         getLogger().info("Hiding Easter Eggs...");
     }
 
-    private void PingingTheBusyBiscuit() {
+    private void pingingTheBusyBiscuit() {
         getLogger().info("Pinging TheBusyBiscuit...");
     }
 }
