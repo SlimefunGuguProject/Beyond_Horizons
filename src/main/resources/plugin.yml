@@ -1,7 +1,7 @@
 name: BeyondHorizons
 version: ${project.version}
-author: CHANGEME
-description: A generic Slimefun4-Addon
+author: Slimeyderp
+description: A generic Slimefun4-Addon made by SlimeyDerp
 website: https://github.com/TheBusyBiscuit/Slimefun4-Addon
 
 main: me.slimeyderp.beyondhorizons.BeyondHorizons
