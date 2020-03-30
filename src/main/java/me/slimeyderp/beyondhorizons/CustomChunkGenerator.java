@@ -27,18 +27,14 @@ public class CustomChunkGenerator extends ChunkGenerator {
                 int randomNumber1 = rand.nextInt(11);
                 if (randomNumber1 > 8) {
                     chunk.setBlock(X, currentHeight, Z, Material.MAGENTA_TERRACOTTA);
-                    biome.setBiome(X, currentHeight, Z, Biome.THE_VOID);
                 } else {
                     chunk.setBlock(X, currentHeight, Z, Material.PURPLE_GLAZED_TERRACOTTA);
-                    biome.setBiome(X, currentHeight, Z, Biome.THE_VOID);
                 }
                 int randomNumber2 = rand.nextInt(11);
                 if (randomNumber2 < 4) {
                     chunk.setBlock(X, currentHeight - 1, Z, Material.PURPUR_BLOCK);
-                    biome.setBiome(X, currentHeight - 1, Z, Biome.THE_VOID);
                 } else {
                     chunk.setBlock(X, currentHeight - 1, Z, Material.PURPUR_PILLAR);
-                    biome.setBiome(X, currentHeight - 1, Z, Biome.THE_VOID);
                 }
                 for (int i = currentHeight - 2; i > 0; i--) {
                     chunk.setBlock(X, i, Z, Material.END_STONE);

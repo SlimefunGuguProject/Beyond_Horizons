@@ -67,11 +67,9 @@ public class BeyondHorizons extends JavaPlugin implements SlimefunAddon {
 
     private void addingEnchantments() {
         ItemMeta ETHERIAL_BALANCE_ROD_META = CustomItemStack.ETHERIAL_BALANCE_ROD_STACK.getItemMeta();
-        assert ETHERIAL_BALANCE_ROD_META != null;
         ETHERIAL_BALANCE_ROD_META.addEnchant(Enchantment.KNOCKBACK, 5, true);
         CustomItemStack.ETHERIAL_BALANCE_ROD_STACK.setItemMeta(ETHERIAL_BALANCE_ROD_META);
         ItemMeta ETHERIAL_PHANTOM_SWORD_META = CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK.getItemMeta();
-        assert ETHERIAL_PHANTOM_SWORD_META != null;
         ETHERIAL_PHANTOM_SWORD_META.addEnchant(Enchantment.DAMAGE_ALL, 5, true);
         CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK.setItemMeta(ETHERIAL_PHANTOM_SWORD_META);
         getLogger().info("Cleaning the dustbins...");
