@@ -14,10 +14,10 @@ public class OrePopulator extends BlockPopulator {
         int X, Y, Z;
         boolean isStone;
         for (int i = 0; i < 60; i++) {  // Number of tries
-            if (random.nextInt(100) < 20) {  // The chance of spawning
+            if (random.nextInt(100) < 40) {  // The chance of spawning
                 X = random.nextInt(15);
                 Z = random.nextInt(15);
-                Y = random.nextInt(40) + 20;  // Get randomized coordinates
+                Y = random.nextInt(225) + 20;  // Get randomized coordinates
                 if (chunk.getBlock(X, Y, Z).getType() == Material.END_STONE) {
                     isStone = true;
                     while (isStone) {
@@ -43,7 +43,7 @@ public class OrePopulator extends BlockPopulator {
                                     Z--;
                                     break;
                             }
-                            if ((X > 15 || X < 0) || ((Z > 15) || (Z < 0))) {
+                            if ((X > 15 || X < 0) || ((Z > 15) || (Z < 0)) || ((Y == 0) || (Y == 256))) {
                                 isStone = false;
                             } else {
                                 isStone = (chunk.getBlock(X, Y, Z).getType() == Material.END_STONE) && (chunk.getBlock(X, Y, Z).getType() != Material.DIAMOND_ORE);

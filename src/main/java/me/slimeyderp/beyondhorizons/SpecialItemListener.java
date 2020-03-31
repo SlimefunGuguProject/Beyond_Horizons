@@ -1,7 +1,10 @@
 package me.slimeyderp.beyondhorizons;
 
+import io.github.thebusybiscuit.slimefun4.api.events.GEOResourceGenerationEvent;
 import me.mrCookieSlime.Slimefun.Setup.SlimefunManager;
 import me.slimeyderp.beyondhorizons.Materials.CustomItemStack;
+import me.slimeyderp.beyondhorizons.Materials.RawAetherResource;
+import me.slimeyderp.beyondhorizons.Materials.UnstableEtheriumResource;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -11,6 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.player.PlayerToggleSprintEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -20,9 +24,12 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
+import java.util.Random;
+
 public class SpecialItemListener implements Listener {
 
     int id = 0;
+    Random rand = new Random();
     BukkitTask Task;
     BeyondHorizons plugin;
 
@@ -114,6 +121,25 @@ public class SpecialItemListener implements Listener {
             } else if (SlimefunManager.isItemSimilar(attacker.getItemInHand(), CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK, true)) {
                 damaged.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 100, 1));
             }
+        }
+    }
+
+    @EventHandler
+    public void onResourceGeneration(GEOResourceGenerationEvent e) {
+        if ((e.getResource() instanceof RawAetherResource) && (e.getWorld() == Bukkit.getServer().getWorld("world_aether"))) {
+            e.setValue(rand.nextInt(18) + 6);
+        }
+        if ((e.getResource() instanceof UnstableEtheriumResource) && (e.getWorld() == Bukkit.getServer().getWorld("world_aether"))) {
+            if (rand.nextInt(101) > 85) {
+                e.setValue(rand.nextInt(3) + 1);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onDragonSpawn(EntitySpawnEvent e) {
+        if ((e.getEntity().getName().equals("ender_dragon")) && (e.getEntity().getWorld() == Bukkit.getServer().getWorld("world_aether"))) {
+            e.setCancelled(true);
         }
     }
 }

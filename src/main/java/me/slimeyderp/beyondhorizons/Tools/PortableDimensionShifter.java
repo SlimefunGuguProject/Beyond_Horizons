@@ -27,15 +27,23 @@ public class PortableDimensionShifter extends SlimefunItem {
         Player player = event.getPlayer();
         if ((player.getWorld()) != (Bukkit.getWorld("world_aether"))) {
             Location loc = player.getLocation();
-            loc = Bukkit.getWorld("world_aether").getHighestBlockAt(loc).getLocation();
-            loc.add(0, 2, 0);
             loc.setWorld(Bukkit.getWorld("world_aether"));
+            loc.setY(1);
+            boolean safe = false;
+            while (true) {
+                if (loc.getBlock().isEmpty() == true) {
+                    loc.add(0, 1, 0);
+                    break;
+                } else {
+                    loc.add(0, 1, 0);
+                }
+            }
             player.teleport(loc);
         } else {
             Location loc = player.getLocation();
-            loc = Bukkit.getWorld("world").getHighestBlockAt(loc).getLocation();
-            loc.add(0, 2, 0);
             loc.setWorld(Bukkit.getWorld("world"));
+            loc = Bukkit.getServer().getWorld("world").getHighestBlockAt(loc).getLocation();
+            loc.add(0, 2, 0);
             player.teleport(loc);
         }
     }

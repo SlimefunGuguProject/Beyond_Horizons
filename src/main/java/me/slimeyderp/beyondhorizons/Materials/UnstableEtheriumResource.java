@@ -7,21 +7,13 @@ import org.bukkit.World.Environment;
 import org.bukkit.block.Biome;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.Random;
-
 public class UnstableEtheriumResource implements GEOResource {
-
-    private Random rand = new Random();
 
     private final NamespacedKey key = new NamespacedKey(BeyondHorizons.getPlugin(BeyondHorizons.class), "unstable_etherium");
 
     @Override
     public int getDefaultSupply(Environment environment, Biome biome) {
-        if (biome != Biome.THE_END) {
-            return environment == Environment.THE_END ? rand.nextInt(3) : 0;
-        } else {
-            return 0;
-        }
+        return 0;
     }
 
     @Override

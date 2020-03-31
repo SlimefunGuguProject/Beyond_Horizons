@@ -7,21 +7,13 @@ import org.bukkit.World.Environment;
 import org.bukkit.block.Biome;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.Random;
-
 public class RawAetherResource implements GEOResource {
-
-    private Random rand = new Random();
 
     private final NamespacedKey key = new NamespacedKey(BeyondHorizons.getPlugin(BeyondHorizons.class), "raw_aether_ore");
 
     @Override
     public int getDefaultSupply(Environment environment, Biome biome) {
-        if (biome != Biome.THE_END) {
-            return environment == Environment.THE_END ? 6 : 0;
-        } else {
-            return 0;
-        }
+        return 0;
     }
 
     @Override
