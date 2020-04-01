@@ -13,11 +13,11 @@ public class OrePopulator extends BlockPopulator {
     public void populate(World world, Random random, Chunk chunk) {
         int X, Y, Z;
         boolean isStone;
-        for (int i = 0; i < 60; i++) {  // Number of tries
-            if (random.nextInt(100) < 40) {  // The chance of spawning
+        for (int i = 0; i < 50; i++) {  // Number of tries
+            if (random.nextInt(100) < 20) {  // The chance of spawning
                 X = random.nextInt(15);
                 Z = random.nextInt(15);
-                Y = random.nextInt(225) + 20;  // Get randomized coordinates
+                Y = random.nextInt(40) + 20;  // Get randomized coordinates
                 if (chunk.getBlock(X, Y, Z).getType() == Material.END_STONE) {
                     isStone = true;
                     while (isStone) {

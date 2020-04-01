@@ -9,6 +9,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -28,7 +29,6 @@ import java.util.Random;
 
 public class SpecialItemListener implements Listener {
 
-    int id = 0;
     Random rand = new Random();
     BukkitTask Task;
     BeyondHorizons plugin;
@@ -136,10 +136,23 @@ public class SpecialItemListener implements Listener {
         }
     }
 
+    //Makes different mobs spawn in the world
     @EventHandler
-    public void onDragonSpawn(EntitySpawnEvent e) {
-        if ((e.getEntity().getName().equals("ender_dragon")) && (e.getEntity().getWorld() == Bukkit.getServer().getWorld("world_aether"))) {
-            e.setCancelled(true);
+    public void onMobSpawning(EntitySpawnEvent e) {
+        if (((e.getLocation().getWorld()) == Bukkit.getServer().getWorld("world_aether")) && (e.getEntityType() == EntityType.ENDERMAN)) {
+            if (rand.nextInt(500) == 420) {
+                e.getLocation().getWorld().spawnEntity(e.getLocation(), EntityType.WITHER);
+                e.setCancelled(true);
+            } else if (rand.nextInt(10) == 4) {
+                e.getLocation().getWorld().spawnEntity(e.getLocation(), EntityType.EVOKER);
+                e.setCancelled(true);
+            } else if (rand.nextInt(5) == 2) {
+                e.getLocation().getWorld().spawnEntity(e.getLocation(), EntityType.BLAZE);
+                e.setCancelled(true);
+            } else {
+                e.getLocation().getWorld().spawnEntity(e.getLocation(), EntityType.PHANTOM);
+                e.setCancelled(true);
+            }
         }
     }
 }

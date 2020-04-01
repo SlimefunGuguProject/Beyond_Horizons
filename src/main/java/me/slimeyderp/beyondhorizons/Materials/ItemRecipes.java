@@ -14,4 +14,5 @@ public class ItemRecipes {
     public static final ItemStack[] CoalDrillRecipe = {null, SlimefunItems.LEAD_INGOT, null, SlimefunItems.LEAD_INGOT, SlimefunItems.ELECTRIC_MOTOR, SlimefunItems.LEAD_INGOT, SlimefunItems.REINFORCED_ALLOY_INGOT, SlimefunItems.BIG_CAPACITOR, SlimefunItems.REINFORCED_ALLOY_INGOT};
     public static final ItemStack[] EtherialPhantomSwordRecipe = {null, CustomItemStack.ETHERIUM_STACK, null, null, CustomItemStack.UNSTABLE_ETHERIUM_STACK, null, null, new ItemStack(Material.STICK), null};
     public static final ItemStack[] PortableDimensionShifterRecipe = {SlimefunItems.GOLD_24K_BLOCK, CustomItemStack.UNSTABLE_ETHERIUM_STACK, SlimefunItems.GOLD_24K_BLOCK, SlimefunItems.CARBONADO, CustomItemStack.RAW_AETHER_STACK, SlimefunItems.CARBONADO, SlimefunItems.GOLD_24K_BLOCK, CustomItemStack.UNSTABLE_ETHERIUM_STACK, SlimefunItems.GOLD_24K_BLOCK};
+    public static final ItemStack[] AetherialWindStaffRecipe = {null, SlimefunItems.NECROTIC_SKULL, null, SlimefunItems.ENDER_LUMP_3, CustomItemStack.RAW_AETHER_STACK, SlimefunItems.ENDER_LUMP_3, null, SlimefunItems.NECROTIC_SKULL, null};
 }

@@ -9,6 +9,7 @@ import me.slimeyderp.beyondhorizons.Electricity.CoalDrill;
 import me.slimeyderp.beyondhorizons.Electricity.DimensionalReactor;
 import me.slimeyderp.beyondhorizons.Electricity.DimensionalTransmutator;
 import me.slimeyderp.beyondhorizons.ExtraCategory;
+import me.slimeyderp.beyondhorizons.Tools.AetherialWindStaff;
 import me.slimeyderp.beyondhorizons.Tools.PortableDimensionShifter;
 import me.slimeyderp.beyondhorizons.Weapons_Armor.NoDisenchantSlimefunItem;
 import org.bukkit.Material;
@@ -27,4 +28,5 @@ public class Items {
     public static final CoalDrill COAL_DRILL = new CoalDrill(ExtraCategory.CUSTOM_CATEGORY, CustomItemStack.COAL_DRILL_STACK, RecipeType.ENHANCED_CRAFTING_TABLE, ItemRecipes.CoalDrillRecipe);
     public static final NoDisenchantSlimefunItem ETHERIAL_PHANTOM_SWORD = new NoDisenchantSlimefunItem(ExtraCategory.CUSTOM_CATEGORY, CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK, RecipeType.ENHANCED_CRAFTING_TABLE, ItemRecipes.EtherialPhantomSwordRecipe);
     public static final PortableDimensionShifter PORTABLE_DIMENSION_SHIFTER = new PortableDimensionShifter(ExtraCategory.CUSTOM_CATEGORY, CustomItemStack.PORTABLE_DIMESNION_SHIFTER_STACK, RecipeType.ENHANCED_CRAFTING_TABLE, ItemRecipes.PortableDimensionShifterRecipe);
+    public static final AetherialWindStaff AETHERIAL_WIND_STAFF = new AetherialWindStaff(ExtraCategory.CUSTOM_CATEGORY, CustomItemStack.AETHERIAL_WIND_STAFF_STACK, RecipeType.ENHANCED_CRAFTING_TABLE, ItemRecipes.AetherialWindStaffRecipe);
 }

@@ -6,10 +6,7 @@ import me.slimeyderp.beyondhorizons.Materials.CustomItemStack;
 import me.slimeyderp.beyondhorizons.Materials.Items;
 import me.slimeyderp.beyondhorizons.Materials.RawAetherResource;
 import me.slimeyderp.beyondhorizons.Materials.UnstableEtheriumResource;
-import org.bukkit.Bukkit;
-import org.bukkit.World;
-import org.bukkit.WorldCreator;
-import org.bukkit.WorldType;
+import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -52,6 +49,7 @@ public class BeyondHorizons extends JavaPlugin implements SlimefunAddon {
         Items.ETHERIUM.register(this);
         Items.UNSTABLE_ETHERIUM.register(this);
         Items.ETHERIAL_BALANCE_ROD.register(this);
+        Items.AETHERIAL_WIND_STAFF.register(this);
         Items.ETHERIAL_PHANTOM_SWORD.register(this);
         Items.DIMENSIONAL_TRANSMUTATOR.register(this);
         Items.DIMENSIONAL_REACTOR.register(this);
@@ -72,21 +70,23 @@ public class BeyondHorizons extends JavaPlugin implements SlimefunAddon {
         ItemMeta ETHERIAL_PHANTOM_SWORD_META = CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK.getItemMeta();
         ETHERIAL_PHANTOM_SWORD_META.addEnchant(Enchantment.DAMAGE_ALL, 5, true);
         CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK.setItemMeta(ETHERIAL_PHANTOM_SWORD_META);
+        ItemMeta AETHERIAL_WIND_STAFF_META = CustomItemStack.AETHERIAL_WIND_STAFF_STACK.getItemMeta();
+        AETHERIAL_WIND_STAFF_META.addEnchant(Enchantment.DURABILITY, 1, true);
+        CustomItemStack.AETHERIAL_WIND_STAFF_STACK.setItemMeta(AETHERIAL_WIND_STAFF_META);
         getLogger().info("Cleaning the dustbins...");
     }
 
     private void makingAetherWorld() {
-        if (Bukkit.getServer().getWorld("world_aether") == null) {
-            WorldCreator wc = new WorldCreator("world_aether");
-            wc.type(WorldType.NORMAL);
-            wc.generator(new CustomChunkGenerator());
-            wc.environment(World.Environment.THE_END);
-            wc.createWorld();
-            getLogger().info("Rewriting the whole add-on..");
-        }
+        WorldCreator wc = new WorldCreator("world_aether");
+        wc.type(WorldType.NORMAL);
+        wc.generator(new CustomChunkGenerator());
+        wc.environment(World.Environment.THE_END);
+        wc.createWorld();
+        getLogger().info("Rewriting the whole add-on..");
     }
 
     private void failingToRewriteTheCode() {
+        Bukkit.getServer().getWorld("world_aether").getBlockAt(0, 1, 0).setType(Material.END_PORTAL);
         getLogger().info("Failing to re-write the whole add-on...");
     }
 
