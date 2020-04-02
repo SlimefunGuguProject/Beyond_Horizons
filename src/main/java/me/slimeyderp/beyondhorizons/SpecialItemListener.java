@@ -1,14 +1,13 @@
 package me.slimeyderp.beyondhorizons;
 
 import io.github.thebusybiscuit.slimefun4.api.events.GEOResourceGenerationEvent;
-import me.mrCookieSlime.Slimefun.Setup.SlimefunManager;
-import me.slimeyderp.beyondhorizons.Materials.CustomItemStack;
-import me.slimeyderp.beyondhorizons.Materials.RawAetherResource;
-import me.slimeyderp.beyondhorizons.Materials.UnstableEtheriumResource;
+import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
+import me.slimeyderp.beyondhorizons.materials.CustomItemStack;
+import me.slimeyderp.beyondhorizons.materials.RawAetherResource;
+import me.slimeyderp.beyondhorizons.materials.UnstableEtheriumResource;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
+import org.bukkit.World;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -19,38 +18,27 @@ import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.player.PlayerToggleSprintEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitTask;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class SpecialItemListener implements Listener {
 
-    Random rand = new Random();
-    BukkitTask Task;
-    BeyondHorizons plugin;
-
-
     public SpecialItemListener(BeyondHorizons plugin) {
-        this.plugin = plugin;
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler
     public void isSprinting(PlayerToggleSprintEvent event) {
-        Player p = event.getPlayer();
-        PlayerInventory playerInventory = p.getInventory();
-        if (SlimefunManager.containsSimilarItem(playerInventory, CustomItemStack.UNSTABLE_ETHERIUM_STACK, true)) {
-            for (int i = 0; i < playerInventory.getSize(); i++) {
-                ItemStack stack = playerInventory.getItem(i);
-                if (SlimefunManager.isItemSimilar(stack, CustomItemStack.UNSTABLE_ETHERIUM_STACK, true)) {
-                    playerInventory.setItem(i, null);
+        final PlayerInventory playerInventory = event.getPlayer().getInventory();
+        if (SlimefunUtils.containsSimilarItem(playerInventory, CustomItemStack.UNSTABLE_ETHERIUM_STACK, true)) {
+            for (ItemStack is : playerInventory.getStorageContents()) {
+                if (SlimefunUtils.isItemSimilar(is, CustomItemStack.UNSTABLE_ETHERIUM_STACK, true)) {
+                    playerInventory.remove(is);
                 }
             }
-            Location loc = p.getLocation();
+            final Location loc = event.getPlayer().getLocation();
             loc.getWorld().createExplosion(loc, 12F);
         }
     }
@@ -58,101 +46,72 @@ public class SpecialItemListener implements Listener {
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
         if (event.getDamager() instanceof Player && event.getEntity() instanceof LivingEntity) {
-            Player attacker = (Player) event.getDamager();
-            LivingEntity damaged = (LivingEntity) event.getEntity();
-            if (SlimefunManager.isItemSimilar(attacker.getItemInHand(), CustomItemStack.ETHERIAL_BALANCE_ROD_STACK, true)) {
-                damaged.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 3, 60));
-                damaged.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 3, 60));
-                damaged.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 3, 60));
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        damaged.getLocation().getWorld().createExplosion(damaged.getLocation(), 2F, false, false);
-                    }
-                }.runTaskLater(plugin, 40);
+            final Player attacker = (Player) event.getDamager();
+            final LivingEntity damaged = (LivingEntity) event.getEntity();
 
-            } else if ((SlimefunManager.isItemSimilar(attacker.getItemInHand(), CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK, true)) && (event.getEntity() instanceof Player)) {
-                Player damaged_player = (Player) event.getEntity();
-                damaged_player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 100, 1));
-                if ((damaged_player.getItemInHand().getType() == Material.DIAMOND_SWORD) ||
-                        (damaged_player.getItemInHand().getType() == Material.GOLDEN_SWORD) ||
-                        (damaged_player.getItemInHand().getType() == Material.IRON_SWORD) ||
-                        (damaged_player.getItemInHand().getType() == Material.STONE_SWORD) ||
-                        (damaged_player.getItemInHand().getType() == Material.WOODEN_SWORD) ||
-                        (damaged_player.getItemInHand().getType() == Material.STICK)) {
-                    ItemMeta DamagedPlayerMeta = damaged_player.getItemInHand().getItemMeta();
-                    DamagedPlayerMeta.addEnchant(Enchantment.ARROW_INFINITE, 10, true);
-                    ItemStack clone = damaged_player.getItemInHand().clone();
-                    clone.setItemMeta(DamagedPlayerMeta);
-                    attacker.setItemInHand(clone);
-                    Task = Bukkit.getServer().getScheduler().runTaskLaterAsynchronously(plugin, new Runnable() {
-                        @Override
-                        public void run() {
-                            byte counter = 0;
-                            for (ItemStack item : attacker.getInventory().getContents()) {
-                                if (item != null) {
-                                    if (item.getEnchantmentLevel(Enchantment.ARROW_INFINITE) == 10) {
-                                        attacker.getInventory().setItem(counter, CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK);
-                                        break;
-                                    }
-                                }
-                                counter++;
-                            }
-                        }
-                    }, 80);
-                }
-            } else if (((attacker.getItemInHand().getEnchantmentLevel(Enchantment.ARROW_INFINITE)) == 10) && (event.getEntity() instanceof Player)) {
-                Task.cancel();
-                Task = Bukkit.getServer().getScheduler().runTaskLaterAsynchronously(plugin, new Runnable() {
-                    @Override
-                    public void run() {
-                        byte counter = 0;
-                        for (ItemStack item : attacker.getInventory().getContents()) {
-                            if (item != null) {
-                                if (item.getEnchantmentLevel(Enchantment.ARROW_INFINITE) == 10) {
-                                    attacker.getInventory().setItem(counter, CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK);
-                                    break;
-                                }
-                            }
-                            counter++;
-                        }
-                    }
-                }, 80);
-            } else if (SlimefunManager.isItemSimilar(attacker.getItemInHand(), CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK, true)) {
+            final ItemStack itemInHand = attacker.getInventory().getItemInMainHand();
+
+            if (SlimefunUtils.isItemSimilar(itemInHand, CustomItemStack.ETHERIAL_BALANCE_ROD_STACK, true)) {
+                handleEtherialRod(damaged);
+            } else if (SlimefunUtils.isItemSimilar(itemInHand, CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK, true)
+                && event.getEntity() instanceof Player
+            ) {
+                final Player damagedPlayer = (Player) event.getEntity();
+                damagedPlayer.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 100, 1));
+            } else if (SlimefunUtils.isItemSimilar(itemInHand, CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK, true)) {
                 damaged.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 100, 1));
             }
         }
     }
 
+    private void handleEtherialRod(final LivingEntity damaged) {
+        damaged.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 3, 60));
+        damaged.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 3, 60));
+        damaged.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 3, 60));
+
+        Bukkit.getScheduler().runTaskLater(BeyondHorizons.getInstance(),
+            () -> damaged.getLocation().getWorld().createExplosion(damaged.getLocation(), 2F, false, false), 40);
+    }
+
     @EventHandler
     public void onResourceGeneration(GEOResourceGenerationEvent e) {
-        if ((e.getResource() instanceof RawAetherResource) && (e.getWorld() == Bukkit.getServer().getWorld("world_aether"))) {
+        final ThreadLocalRandom rand = ThreadLocalRandom.current();
+
+        if (e.getResource() instanceof RawAetherResource
+            && e.getWorld() == Bukkit.getServer().getWorld("world_aether")
+        ) {
             e.setValue(rand.nextInt(18) + 6);
         }
-        if ((e.getResource() instanceof UnstableEtheriumResource) && (e.getWorld() == Bukkit.getServer().getWorld("world_aether"))) {
-            if (rand.nextInt(101) > 85) {
-                e.setValue(rand.nextInt(3) + 1);
-            }
+        if (e.getResource() instanceof UnstableEtheriumResource
+            && e.getWorld() == Bukkit.getServer().getWorld("world_aether")
+            && rand.nextInt(101) > 85
+        ) {
+            e.setValue(rand.nextInt(3) + 1);
         }
     }
 
-    //Makes different mobs spawn in the world
+    // Makes different mobs spawn in the world
     @EventHandler
     public void onMobSpawning(EntitySpawnEvent e) {
-        if (((e.getLocation().getWorld()) == Bukkit.getServer().getWorld("world_aether")) && (e.getEntityType() == EntityType.ENDERMAN)) {
+        final ThreadLocalRandom rand = ThreadLocalRandom.current();
+
+        final World aether = Bukkit.getServer().getWorld("world_aether");
+        if (e.getEntityType() == EntityType.ENDERMAN
+            && aether != null
+            && e.getLocation().getWorld().getUID().equals(aether.getUID())
+        ) {
+            final EntityType type;
             if (rand.nextInt(500) == 420) {
-                e.getLocation().getWorld().spawnEntity(e.getLocation(), EntityType.WITHER);
-                e.setCancelled(true);
+                type = EntityType.WITHER;
             } else if (rand.nextInt(10) == 4) {
-                e.getLocation().getWorld().spawnEntity(e.getLocation(), EntityType.EVOKER);
-                e.setCancelled(true);
+                type = EntityType.EVOKER;
             } else if (rand.nextInt(5) == 2) {
-                e.getLocation().getWorld().spawnEntity(e.getLocation(), EntityType.BLAZE);
-                e.setCancelled(true);
+                type = EntityType.BLAZE;
             } else {
-                e.getLocation().getWorld().spawnEntity(e.getLocation(), EntityType.PHANTOM);
-                e.setCancelled(true);
+                type = EntityType.PHANTOM;
             }
+            e.getLocation().getWorld().spawnEntity(e.getLocation(), type);
+            e.setCancelled(true);
         }
     }
 }

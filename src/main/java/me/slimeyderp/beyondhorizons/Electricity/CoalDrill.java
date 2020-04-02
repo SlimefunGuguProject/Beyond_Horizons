@@ -1,4 +1,4 @@
-package me.slimeyderp.beyondhorizons.Electricity;
+package me.slimeyderp.beyondhorizons.electricity;
 
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
@@ -6,7 +6,7 @@ import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.slimeyderp.beyondhorizons.Materials.CustomItemStack;
+import me.slimeyderp.beyondhorizons.materials.CustomItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -21,10 +21,14 @@ public class CoalDrill extends AContainer implements RecipeDisplayItem {
 
     @Override
     protected void registerDefaultRecipes() {
-        registerRecipe(6, new ItemStack[]{new ItemStack(Material.COBBLESTONE)}, new ItemStack[]{CustomItemStack.COAL_DUST_STACK});
-        registerRecipe(6, new ItemStack[]{new ItemStack(Material.STONE)}, new ItemStack[]{CustomItemStack.COAL_DUST_STACK});
-        registerRecipe(6, new ItemStack[]{new ItemStack(Material.DIORITE)}, new ItemStack[]{CustomItemStack.COAL_DUST_STACK});
-        registerRecipe(6, new ItemStack[]{new ItemStack(Material.GRANITE)}, new ItemStack[]{CustomItemStack.COAL_DUST_STACK});
+        registerRecipe(6, new ItemStack[] {new ItemStack(Material.COBBLESTONE)},
+            new ItemStack[] {CustomItemStack.COAL_DUST_STACK});
+        registerRecipe(6, new ItemStack[] {new ItemStack(Material.STONE)},
+            new ItemStack[] {CustomItemStack.COAL_DUST_STACK});
+        registerRecipe(6, new ItemStack[] {new ItemStack(Material.DIORITE)},
+            new ItemStack[] {CustomItemStack.COAL_DUST_STACK});
+        registerRecipe(6, new ItemStack[] {new ItemStack(Material.GRANITE)},
+            new ItemStack[] {CustomItemStack.COAL_DUST_STACK});
     }
 
     @Override
@@ -39,16 +43,15 @@ public class CoalDrill extends AContainer implements RecipeDisplayItem {
 
     @Override
     public List<ItemStack> getDisplayRecipes() {
-        List<ItemStack> displayRecipes = new ArrayList<>(recipes.size() * 2);
+        final List<ItemStack> displayRecipes = new ArrayList<>(recipes.size() * 2);
 
         for (MachineRecipe recipe : recipes) {
             displayRecipes.add(recipe.getInput()[0]);
-            displayRecipes.add(recipe.getOutput()[recipe.getOutput().length - 1]);
+            displayRecipes.add(recipe.getOutput()[0]);
         }
 
         return displayRecipes;
     }
-
 
     @Override
     public ItemStack getProgressBar() {

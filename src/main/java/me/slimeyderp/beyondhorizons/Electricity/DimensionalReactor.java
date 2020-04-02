@@ -1,4 +1,4 @@
-package me.slimeyderp.beyondhorizons.Electricity;
+package me.slimeyderp.beyondhorizons.electricity;
 
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
@@ -6,7 +6,7 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AReactor;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineFuel;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
-import me.slimeyderp.beyondhorizons.Materials.CustomItemStack;
+import me.slimeyderp.beyondhorizons.materials.CustomItemStack;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 
@@ -24,12 +24,12 @@ public class DimensionalReactor extends AReactor {
     @Override
     protected void registerDefaultFuelTypes() {
         registerFuel(new MachineFuel(1500, CustomItemStack.RAW_AETHER_STACK, null));
-
     }
 
     @Override
     public ItemStack getProgressBar() {
-        return SkullItem.fromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTNhZDhlZTg0OWVkZjA0ZWQ5YTI2Y2EzMzQxZjYwMzNiZDc2ZGNjNDIzMWVkMWVhNjNiNzU2NTc1MWIyN2FjIn19fQ==");
+        return SkullItem.fromBase64(
+            "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTNhZDhlZTg0OWVkZjA0ZWQ5YTI2Y2EzMzQxZjYwMzNiZDc2ZGNjNDIzMWVkMWVhNjNiNzU2NTc1MWIyN2FjIn19fQ==");
     }
 
     @Override

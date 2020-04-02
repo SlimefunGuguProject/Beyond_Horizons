@@ -11,44 +11,49 @@ public class OrePopulator extends BlockPopulator {
 
     @Override
     public void populate(World world, Random random, Chunk chunk) {
-        int X, Y, Z;
         boolean isStone;
+
         for (int i = 0; i < 50; i++) {  // Number of tries
             if (random.nextInt(100) < 20) {  // The chance of spawning
-                X = random.nextInt(15);
-                Z = random.nextInt(15);
-                Y = random.nextInt(40) + 20;  // Get randomized coordinates
-                if (chunk.getBlock(X, Y, Z).getType() == Material.END_STONE) {
+                int x = random.nextInt(15);
+                int y = random.nextInt(40) + 20;  // Get randomized coordinates
+                int z = random.nextInt(15);
+                if (chunk.getBlock(x, y, z).getType() == Material.END_STONE) {
                     isStone = true;
                     while (isStone) {
-                        chunk.getBlock(X, Y, Z).setType(Material.DIAMOND_ORE);
+                        chunk.getBlock(x, y, z).setType(Material.DIAMOND_ORE);
                         if (random.nextInt(100) < 40) {   // The chance of continuing the vein
-                            switch (random.nextInt(5)) {  // The direction chooser
+                            switch (random.nextInt(6)) {  // The direction chooser
                                 case 0:
-                                    X++;
+                                    x++;
                                     break;
                                 case 1:
-                                    Y++;
+                                    y++;
                                     break;
                                 case 2:
-                                    Z++;
+                                    z++;
                                     break;
                                 case 3:
-                                    X--;
+                                    x--;
                                     break;
                                 case 4:
-                                    Y--;
+                                    y--;
                                     break;
                                 case 5:
-                                    Z--;
+                                    z--;
+                                    break;
+                                default:
                                     break;
                             }
-                            if ((X > 15 || X < 0) || ((Z > 15) || (Z < 0)) || ((Y == 0) || (Y == 256))) {
+
+                            if ((x > 15 || x < 0) || (z > 15 || z < 0) || (y == 0 || y == 256)) {
                                 isStone = false;
                             } else {
-                                isStone = (chunk.getBlock(X, Y, Z).getType() == Material.END_STONE) && (chunk.getBlock(X, Y, Z).getType() != Material.DIAMOND_ORE);
+                                isStone = chunk.getBlock(x, y, z).getType() == Material.END_STONE
+                                    && chunk.getBlock(x, y, z).getType() != Material.DIAMOND_ORE;
                             }
-                        } else isStone = false;
+                        } else
+                            isStone = false;
                     }
                 }
             }

@@ -1,53 +1,37 @@
-package me.slimeyderp.beyondhorizons.Tools;
+package me.slimeyderp.beyondhorizons.tools;
 
-import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SimpleSlimefunItem;
 import me.mrCookieSlime.Slimefun.Objects.handlers.ItemUseHandler;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.slimeyderp.beyondhorizons.BeyondHorizons;
-import me.slimeyderp.beyondhorizons.Materials.CustomItemStack;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitRunnable;
 
-public class AetherialWindStaff extends SlimefunItem {
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
-    ItemStack stick = new ItemStack(Material.STICK);
+public class AetherialWindStaff extends SimpleSlimefunItem<ItemUseHandler> {
+
+    private final Map<UUID, Long> cooldown = new HashMap<>();
 
     public AetherialWindStaff(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
     }
 
     @Override
-    public void preRegister() {
-        ItemUseHandler itemusehandler = this::onItemRightClick;
-        addItemHandler(itemusehandler);
-    }
-
-    private void onItemRightClick(PlayerRightClickEvent e) {
-        Player p = e.getPlayer();
-        if (p.getWorld() == Bukkit.getServer().getWorld("world_aether")) {
-            p.setVelocity((p.getLocation().getDirection()).multiply(10));
-            p.setItemInHand(stick);
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    byte counter = -1;
-                    for (ItemStack item : p.getInventory().getContents()) {
-                        counter++;
-                        if (item != null) {
-                            if (item.equals(stick)) {
-                                p.getInventory().setItem(counter, CustomItemStack.AETHERIAL_WIND_STAFF_STACK);
-                                break;
-                            }
-                        }
-                    }
-                }
-            }.runTaskLater(BeyondHorizons.getPlugin(BeyondHorizons.class), 20);
-        }
+    public ItemUseHandler getItemHandler() {
+        return e -> {
+            final Player p = e.getPlayer();
+            final World aether = Bukkit.getServer().getWorld("world_aether");
+            final long lastHit = cooldown.getOrDefault(p.getUniqueId(), -1L);
+            if (aether != null && p.getWorld().getUID().equals(aether.getUID()) && lastHit <= System.currentTimeMillis()) {
+                p.setVelocity(p.getLocation().getDirection().multiply(10));
+                cooldown.put(p.getUniqueId(), System.currentTimeMillis() + 1000);
+            }
+        };
     }
 }
