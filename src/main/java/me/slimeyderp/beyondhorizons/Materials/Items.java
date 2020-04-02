@@ -1,17 +1,17 @@
-package me.slimeyderp.beyondhorizons.Materials;
+package me.slimeyderp.beyondhorizons.materials;
 
 import io.github.thebusybiscuit.slimefun4.core.attributes.Radioactivity;
 import io.github.thebusybiscuit.slimefun4.implementation.items.RadioactiveItem;
 import io.github.thebusybiscuit.slimefun4.implementation.items.VanillaItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.slimeyderp.beyondhorizons.Electricity.CoalDrill;
-import me.slimeyderp.beyondhorizons.Electricity.DimensionalReactor;
-import me.slimeyderp.beyondhorizons.Electricity.DimensionalTransmutator;
+import me.slimeyderp.beyondhorizons.electricity.CoalDrill;
+import me.slimeyderp.beyondhorizons.electricity.DimensionalReactor;
+import me.slimeyderp.beyondhorizons.electricity.DimensionalTransmutator;
 import me.slimeyderp.beyondhorizons.ExtraCategory;
-import me.slimeyderp.beyondhorizons.Tools.AetherialWindStaff;
-import me.slimeyderp.beyondhorizons.Tools.PortableDimensionShifter;
-import me.slimeyderp.beyondhorizons.Weapons_Armor.NoDisenchantSlimefunItem;
+import me.slimeyderp.beyondhorizons.tools.AetherialWindStaff;
+import me.slimeyderp.beyondhorizons.tools.PortableDimensionShifter;
+import me.slimeyderp.beyondhorizons.weapons_armor.NoDisenchantSlimefunItem;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 

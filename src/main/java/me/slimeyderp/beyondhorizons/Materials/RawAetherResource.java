@@ -1,4 +1,4 @@
-package me.slimeyderp.beyondhorizons.Materials;
+package me.slimeyderp.beyondhorizons.materials;
 
 import io.github.thebusybiscuit.slimefun4.api.geo.GEOResource;
 import me.slimeyderp.beyondhorizons.BeyondHorizons;

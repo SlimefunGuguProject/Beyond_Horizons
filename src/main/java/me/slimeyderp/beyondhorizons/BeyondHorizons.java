@@ -2,10 +2,10 @@ package me.slimeyderp.beyondhorizons;
 
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import me.mrCookieSlime.Slimefun.cscorelib2.updater.BukkitUpdater;
-import me.slimeyderp.beyondhorizons.Materials.CustomItemStack;
-import me.slimeyderp.beyondhorizons.Materials.Items;
-import me.slimeyderp.beyondhorizons.Materials.RawAetherResource;
-import me.slimeyderp.beyondhorizons.Materials.UnstableEtheriumResource;
+import me.slimeyderp.beyondhorizons.materials.CustomItemStack;
+import me.slimeyderp.beyondhorizons.materials.Items;
+import me.slimeyderp.beyondhorizons.materials.RawAetherResource;
+import me.slimeyderp.beyondhorizons.materials.UnstableEtheriumResource;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.meta.ItemMeta;

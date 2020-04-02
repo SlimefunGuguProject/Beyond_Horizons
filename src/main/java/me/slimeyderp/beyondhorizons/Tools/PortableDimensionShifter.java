@@ -1,4 +1,4 @@
-package me.slimeyderp.beyondhorizons.Tools;
+package me.slimeyderp.beyondhorizons.tools;
 
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;

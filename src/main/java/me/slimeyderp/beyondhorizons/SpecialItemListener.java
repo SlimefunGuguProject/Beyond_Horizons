@@ -2,9 +2,9 @@ package me.slimeyderp.beyondhorizons;
 
 import io.github.thebusybiscuit.slimefun4.api.events.GEOResourceGenerationEvent;
 import me.mrCookieSlime.Slimefun.Setup.SlimefunManager;
-import me.slimeyderp.beyondhorizons.Materials.CustomItemStack;
-import me.slimeyderp.beyondhorizons.Materials.RawAetherResource;
-import me.slimeyderp.beyondhorizons.Materials.UnstableEtheriumResource;
+import me.slimeyderp.beyondhorizons.materials.CustomItemStack;
+import me.slimeyderp.beyondhorizons.materials.RawAetherResource;
+import me.slimeyderp.beyondhorizons.materials.UnstableEtheriumResource;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;

@@ -1,4 +1,4 @@
-package me.slimeyderp.beyondhorizons.Tools;
+package me.slimeyderp.beyondhorizons.tools;
 
 import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
@@ -7,7 +7,7 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.Objects.handlers.ItemUseHandler;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.slimeyderp.beyondhorizons.BeyondHorizons;
-import me.slimeyderp.beyondhorizons.Materials.CustomItemStack;
+import me.slimeyderp.beyondhorizons.materials.CustomItemStack;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

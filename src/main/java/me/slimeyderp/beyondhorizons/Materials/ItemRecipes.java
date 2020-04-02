@@ -1,4 +1,4 @@
-package me.slimeyderp.beyondhorizons.Materials;
+package me.slimeyderp.beyondhorizons.materials;
 
 import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
 import org.bukkit.Material;

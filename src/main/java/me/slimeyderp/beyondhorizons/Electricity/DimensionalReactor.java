@@ -1,4 +1,4 @@
-package me.slimeyderp.beyondhorizons.Electricity;
+package me.slimeyderp.beyondhorizons.electricity;
 
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
@@ -6,7 +6,7 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AReactor;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineFuel;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
-import me.slimeyderp.beyondhorizons.Materials.CustomItemStack;
+import me.slimeyderp.beyondhorizons.materials.CustomItemStack;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 

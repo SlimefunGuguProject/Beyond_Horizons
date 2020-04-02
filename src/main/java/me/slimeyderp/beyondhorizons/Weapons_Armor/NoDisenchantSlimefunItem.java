@@ -1,4 +1,4 @@
-package me.slimeyderp.beyondhorizons.Weapons_Armor;
+package me.slimeyderp.beyondhorizons.weapons_armor;
 
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
