@@ -18,7 +18,6 @@ public class BeyondHorizons extends JavaPlugin implements SlimefunAddon {
 
     private static BeyondHorizons instance;
 
-    
     @Override
     public void onEnable() {
         instance = this;
