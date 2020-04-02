@@ -1,51 +1,35 @@
 package me.slimeyderp.beyondhorizons.tools;
 
-import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SimpleSlimefunItem;
 import me.mrCookieSlime.Slimefun.Objects.handlers.ItemUseHandler;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public class PortableDimensionShifter extends SlimefunItem {
+public class PortableDimensionShifter extends SimpleSlimefunItem<ItemUseHandler> {
 
-    public PortableDimensionShifter(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public PortableDimensionShifter(Category category, SlimefunItemStack item, RecipeType recipeType,
+                                    ItemStack[] recipe
+    ) {
         super(category, item, recipeType, recipe);
     }
 
     @Override
-    public void preRegister() {
-        ItemUseHandler itemusehandler = this::onItemRightClick;
-        addItemHandler(itemusehandler);
-    }
-
-    private void onItemRightClick(PlayerRightClickEvent event) {
-        Player player = event.getPlayer();
-        if ((player.getWorld()) != (Bukkit.getWorld("world_aether"))) {
-            Location loc = player.getLocation();
-            loc.setWorld(Bukkit.getWorld("world_aether"));
-            loc.setY(1);
-            boolean safe = false;
-            while (true) {
-                if (loc.getBlock().isEmpty() == true) {
-                    loc.add(0, 1, 0);
-                    break;
-                } else {
-                    loc.add(0, 1, 0);
-                }
+    public ItemUseHandler getItemHandler() {
+        return event -> {
+            final Player player = event.getPlayer();
+            final World world = Bukkit.getWorlds().get(0);
+            final World aether = Bukkit.getWorld("world_aether");
+            if (aether != null && player.getWorld().getUID().equals(aether.getUID())) {
+                player.teleport(aether.getHighestBlockAt(player.getLocation()).getLocation().add(0, 2, 0));
+            } else {
+                player.teleport(world.getHighestBlockAt(player.getLocation()).getLocation().add(0, 2, 0));
             }
-            player.teleport(loc);
-        } else {
-            Location loc = player.getLocation();
-            loc.setWorld(Bukkit.getWorld("world"));
-            loc = Bukkit.getServer().getWorld("world").getHighestBlockAt(loc).getLocation();
-            loc.add(0, 2, 0);
-            player.teleport(loc);
-        }
+        };
     }
 
 }
