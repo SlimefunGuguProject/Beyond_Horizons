@@ -8,7 +8,7 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 
 public final class CustomItemStack {
-    
+
     public static final SlimefunItemStack ETHERIUM_STACK = new SlimefunItemStack(
         "ETHERIUM",
         "547de8914ac2cb975f85587e33be967a81ee751b4532a9bf2ea9fb85f2d759be",

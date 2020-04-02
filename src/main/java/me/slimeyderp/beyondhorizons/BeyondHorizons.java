@@ -6,7 +6,10 @@ import me.slimeyderp.beyondhorizons.materials.CustomItemStack;
 import me.slimeyderp.beyondhorizons.materials.Items;
 import me.slimeyderp.beyondhorizons.materials.RawAetherResource;
 import me.slimeyderp.beyondhorizons.materials.UnstableEtheriumResource;
-import org.bukkit.*;
+import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.WorldCreator;
+import org.bukkit.WorldType;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -15,6 +18,7 @@ public class BeyondHorizons extends JavaPlugin implements SlimefunAddon {
 
     private static BeyondHorizons instance;
 
+    
     @Override
     public void onEnable() {
         instance = this;

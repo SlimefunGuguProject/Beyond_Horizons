@@ -16,17 +16,23 @@ import java.util.List;
 
 public class DimensionalTransmutator extends AContainer implements RecipeDisplayItem {
 
-    public DimensionalTransmutator(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public DimensionalTransmutator(Category category, SlimefunItemStack item, RecipeType recipeType,
+                                   ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
     }
 
     @Override
     protected void registerDefaultRecipes() {
-        registerRecipe(8, new ItemStack[]{SlimefunItems.REACTOR_COOLANT_CELL}, new ItemStack[]{SlimefunItems.NETHER_ICE_COOLANT_CELL});
-        registerRecipe(8, new ItemStack[]{SlimefunItems.NETHER_ICE_COOLANT_CELL}, new ItemStack[]{CustomItemStack.SUPER_CHARGED_COOLANT_CELL_STACK});
-        registerRecipe(8, new ItemStack[]{SlimefunItems.URANIUM}, new ItemStack[]{CustomItemStack.RAW_AETHER_STACK});
-        registerRecipe(8, new ItemStack[]{CustomItemStack.ETHERIUM_STACK}, new ItemStack[]{CustomItemStack.UNSTABLE_ETHERIUM_STACK});
-        registerRecipe(8, new ItemStack[]{CustomItemStack.UNSTABLE_ETHERIUM_STACK}, new ItemStack[]{CustomItemStack.ETHERIUM_STACK});
+        registerRecipe(8, new ItemStack[] {SlimefunItems.REACTOR_COOLANT_CELL},
+            new ItemStack[] {SlimefunItems.NETHER_ICE_COOLANT_CELL});
+        registerRecipe(8, new ItemStack[] {SlimefunItems.NETHER_ICE_COOLANT_CELL},
+            new ItemStack[] {CustomItemStack.SUPER_CHARGED_COOLANT_CELL_STACK});
+        registerRecipe(8, new ItemStack[] {SlimefunItems.URANIUM},
+            new ItemStack[] {CustomItemStack.RAW_AETHER_STACK});
+        registerRecipe(8, new ItemStack[] {CustomItemStack.ETHERIUM_STACK},
+            new ItemStack[] {CustomItemStack.UNSTABLE_ETHERIUM_STACK});
+        registerRecipe(8, new ItemStack[] {CustomItemStack.UNSTABLE_ETHERIUM_STACK},
+            new ItemStack[] {CustomItemStack.ETHERIUM_STACK});
     }
 
     @Override
@@ -41,11 +47,11 @@ public class DimensionalTransmutator extends AContainer implements RecipeDisplay
 
     @Override
     public List<ItemStack> getDisplayRecipes() {
-        List<ItemStack> displayRecipes = new ArrayList<>(recipes.size() * 2);
+        final List<ItemStack> displayRecipes = new ArrayList<>(recipes.size() * 2);
 
         for (MachineRecipe recipe : recipes) {
             displayRecipes.add(recipe.getInput()[0]);
-            displayRecipes.add(recipe.getOutput()[recipe.getOutput().length - 1]);
+            displayRecipes.add(recipe.getOutput()[0]);
         }
 
         return displayRecipes;

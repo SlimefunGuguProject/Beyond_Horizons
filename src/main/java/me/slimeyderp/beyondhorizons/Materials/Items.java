@@ -38,10 +38,10 @@ public final class Items {
     );
     public static final DimensionalTransmutator DIMENSIONAL_TRANSMUTATOR = new DimensionalTransmutator(
         ExtraCategory.CUSTOM_CATEGORY,
-            CustomItemStack.DIMENSIONAL_TRANSMUTATOR_STACK,
-            RecipeType.ENHANCED_CRAFTING_TABLE,
-            ItemRecipes.DIMENSIONAL_TRANSMUTATOR_RECIPE
-        );
+        CustomItemStack.DIMENSIONAL_TRANSMUTATOR_STACK,
+        RecipeType.ENHANCED_CRAFTING_TABLE,
+        ItemRecipes.DIMENSIONAL_TRANSMUTATOR_RECIPE
+    );
     public static final SlimefunItem UNSTABLE_ETHERIUM = new SlimefunItem(
         ExtraCategory.CUSTOM_CATEGORY,
         CustomItemStack.UNSTABLE_ETHERIUM_STACK,
