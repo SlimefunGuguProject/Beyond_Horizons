@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class RawAetherResource implements GEOResource {
 
-    private final NamespacedKey key = new NamespacedKey(BeyondHorizons.getPlugin(BeyondHorizons.class), "raw_aether_ore");
+    private final NamespacedKey key = new NamespacedKey(BeyondHorizons.getInstance(), "raw_aether_ore");
 
     @Override
     public int getDefaultSupply(Environment environment, Biome biome) {

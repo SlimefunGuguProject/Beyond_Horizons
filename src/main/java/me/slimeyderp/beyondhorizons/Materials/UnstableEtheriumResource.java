@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class UnstableEtheriumResource implements GEOResource {
 
-    private final NamespacedKey key = new NamespacedKey(BeyondHorizons.getPlugin(BeyondHorizons.class), "unstable_etherium");
+    private final NamespacedKey key = new NamespacedKey(BeyondHorizons.getInstance(), "unstable_etherium");
 
     @Override
     public int getDefaultSupply(Environment environment, Biome biome) {
