@@ -55,9 +55,7 @@ public class BeyondHorizons extends JavaPlugin implements SlimefunAddon {
         Items.DIMENSIONAL_REACTOR.register(this);
         Items.SUPER_CHARGED_COOLANT_CELL.register(this);
         Items.RAW_AETHER.register(this);
-        Items.REFINED_AETHER.register(this);
         Items.COAL.register(this);
-        Items.WITHER_SKELETON_SKULL.register(this);
         Items.COAL_DUST.register(this);
         Items.COAL_DRILL.register(this);
         Items.PORTABLE_DIMENSION_SHIFTER.register(this);
@@ -71,8 +69,7 @@ public class BeyondHorizons extends JavaPlugin implements SlimefunAddon {
         CustomItemStack.ETHERIAL_BALANCE_ROD_STACK.setItemMeta(etherialBalanceRod);
 
         ItemMeta etherialPhantomSword = CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK.getItemMeta();
-        etherialPhantomSword.addEnchant(Enchantment.DAMAGE_ALL, 10, true);
-        etherialPhantomSword.addEnchant(Enchantment.DURABILITY, 10, true);
+        etherialPhantomSword.addEnchant(Enchantment.DAMAGE_ALL, 5, true);
         CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK.setItemMeta(etherialPhantomSword);
 
         ItemMeta aetherialWindStaff = CustomItemStack.AETHERIAL_WIND_STAFF_STACK.getItemMeta();

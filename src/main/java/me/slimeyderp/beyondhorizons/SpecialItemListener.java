@@ -54,19 +54,20 @@ public class SpecialItemListener implements Listener {
             if (SlimefunUtils.isItemSimilar(itemInHand, CustomItemStack.ETHERIAL_BALANCE_ROD_STACK, true)) {
                 handleEtherialRod(damaged);
             } else if (SlimefunUtils.isItemSimilar(itemInHand, CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK, true)
-                && attacker.getWorld() == Bukkit.getServer().getWorld("world_aether")
+                && event.getEntity() instanceof Player
             ) {
-                damaged.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 200, 2));
-                damaged.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 200, 3));
-                damaged.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 200, 1));
+                final Player damagedPlayer = (Player) event.getEntity();
+                damagedPlayer.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 100, 1));
+            } else if (SlimefunUtils.isItemSimilar(itemInHand, CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK, true)) {
+                damaged.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 100, 1));
             }
         }
     }
 
     private void handleEtherialRod(final LivingEntity damaged) {
         damaged.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 3, 60));
-        damaged.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 60, 1));
-        damaged.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 60, 1));
+        damaged.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 3, 60));
+        damaged.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 3, 60));
 
         Bukkit.getScheduler().runTaskLater(BeyondHorizons.getInstance(),
             () -> damaged.getLocation().getWorld().createExplosion(damaged.getLocation(), 2F, false, false), 40);
@@ -85,7 +86,7 @@ public class SpecialItemListener implements Listener {
             && e.getWorld() == Bukkit.getServer().getWorld("world_aether")
             && rand.nextInt(101) > 85
         ) {
-            e.setValue(rand.nextInt(3));
+            e.setValue(rand.nextInt(3) + 1);
         }
     }
 
@@ -100,21 +101,17 @@ public class SpecialItemListener implements Listener {
             && e.getLocation().getWorld().getUID().equals(aether.getUID())
         ) {
             final EntityType type;
-            if (rand.nextInt(2000) == 420) {
+            if (rand.nextInt(500) == 420) {
                 type = EntityType.WITHER;
             } else if (rand.nextInt(10) == 4) {
                 type = EntityType.EVOKER;
             } else if (rand.nextInt(5) == 2) {
                 type = EntityType.BLAZE;
-            } else if (rand.nextInt(5) > 2 ) {
-                type = EntityType.PHANTOM;
             } else {
-                type = EntityType.VINDICATOR;
+                type = EntityType.PHANTOM;
             }
             e.getLocation().getWorld().spawnEntity(e.getLocation(), type);
             e.setCancelled(true);
         }
     }
-
-
 }

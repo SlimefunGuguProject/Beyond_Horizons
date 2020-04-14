@@ -55,17 +55,17 @@ public class CoalDrill extends AContainer implements RecipeDisplayItem {
 
     @Override
     public ItemStack getProgressBar() {
-        return new ItemStack(Material.IRON_PICKAXE);
+        return new ItemStack(Material.ENDER_EYE);
     }
 
     @Override
     public String getInventoryTitle() {
-        return "&1Coal Drill";
+        return "&dDimensional Transmutator";
     }
 
     @Override
     public String getMachineIdentifier() {
-        return "COAL_DRILL";
+        return "DIMENSIONAL_TRANSMUTATOR";
     }
 
     @Override

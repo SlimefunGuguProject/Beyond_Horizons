@@ -38,9 +38,6 @@ public class DimensionalReactor extends AReactor {
     }
 
     @Override
-    public ItemStack getFuelIcon() { return CustomItemStack.RAW_AETHER_STACK; }
-
-    @Override
     public int getEnergyProduction() {
         return 1750;
     }
