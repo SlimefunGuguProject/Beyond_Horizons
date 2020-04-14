@@ -82,7 +82,7 @@ public final class CustomItemStack {
         "ETHERIAL_PHANTOM_SWORD",
         Material.IRON_SWORD,
         "&eEtherial Phantom Sword",
-        "", "&dSteal your enemies' power and seal their fate!"
+        "", "&dDeath to those in the forbidden", "&drealms of this land.","&3Special Ability on Aether"
     );
     public static final SlimefunItemStack PORTABLE_DIMESNION_SHIFTER_STACK = new SlimefunItemStack(
         "PORTABLE_DIMENSION_SHIFTER",
@@ -95,8 +95,15 @@ public final class CustomItemStack {
         "AETHERIAL_WIND_STAFF",
         Material.STICK,
         "&eAetherial Wind Staff",
-        "", "&dA stick with a weird stone.", "&dI wonder what would happen if you", "&d used it in a twisted place?"
+        "", "&dA stick with a weird stone.",
+        "&dI wonder what would happen if you", "&d used it in a twisted place?", "&3Special Ability on Aether"
     );
-
+    public static final SlimefunItemStack REFINED_AETHER_STACK = new SlimefunItemStack(
+        "REFINED_AETHER",
+        "169fb0e714c03b1910fb4c62c8dbc8a3d31d27532d5d4c51fd239558e530be44",
+        "&1Refined Aether Ore",
+        "", "&dPurified and full of energy",
+        LoreBuilder.radioactive(Radioactivity.VERY_DEADLY), LoreBuilder.HAZMAT_SUIT_REQUIRED
+    );
     private CustomItemStack() {}
 }

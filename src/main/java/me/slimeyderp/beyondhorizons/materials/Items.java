@@ -36,6 +36,13 @@ public final class Items {
         ExtraRecipeTypes.DIMENSIONAL_TRANSMUTATOR_RECIPETYPE,
         ItemRecipes.EMPTY_RECIPE
     );
+    public static final SlimefunItem REFINED_AETHER = new RadioactiveItem(
+        ExtraCategory.CUSTOM_CATEGORY,
+        Radioactivity.VERY_DEADLY,
+        CustomItemStack.REFINED_AETHER_STACK,
+        RecipeType.SMELTERY,
+        ItemRecipes.REFINED_AETHER_RECIPE
+    );
     public static final DimensionalTransmutator DIMENSIONAL_TRANSMUTATOR = new DimensionalTransmutator(
         ExtraCategory.CUSTOM_CATEGORY,
         CustomItemStack.DIMENSIONAL_TRANSMUTATOR_STACK,
@@ -72,6 +79,13 @@ public final class Items {
         "coal",
         RecipeType.COMPRESSOR,
         ItemRecipes.COAL_RECIPE
+    );
+    public static final VanillaItem WITHER_SKELETON_SKULL = new VanillaItem(
+        ExtraCategory.CUSTOM_CATEGORY,
+        new ItemStack(Material.WITHER_SKELETON_SKULL),
+        "witherskeletonskull",
+        RecipeType.COMPRESSOR,
+        ItemRecipes.WITHER_SKELLETON_SKULL_RECIPE
     );
     public static final CoalDrill COAL_DRILL = new CoalDrill(
         ExtraCategory.CUSTOM_CATEGORY,

@@ -23,8 +23,8 @@ public class PortableDimensionShifter extends SimpleSlimefunItem<ItemUseHandler>
         return event -> {
             final Player player = event.getPlayer();
             final World world = Bukkit.getWorlds().get(0);
-            final World aether = Bukkit.getWorld("world_aether");
-            if (aether != null && player.getWorld().getUID().equals(aether.getUID())) {
+            final World aether = Bukkit.getServer().getWorld("world_aether");
+            if (aether != null && player.getWorld() != (aether)) {
                 player.teleport(aether.getHighestBlockAt(player.getLocation()).getLocation().add(0, 2, 0));
             } else {
                 player.teleport(world.getHighestBlockAt(player.getLocation()).getLocation().add(0, 2, 0));
