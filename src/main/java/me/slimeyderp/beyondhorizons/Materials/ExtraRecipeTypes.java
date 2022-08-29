@@ -1,6 +1,6 @@
-package me.slimeyderp.beyondhorizons.materials;
+package me.slimeyderp.beyondhorizons.Materials;
 
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import me.slimeyderp.beyondhorizons.BeyondHorizons;
 import org.bukkit.NamespacedKey;
 

@@ -41,14 +41,54 @@
                 </includes>
             </resource>
         </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <relocations>
+                        <relocation>
+                            <pattern>io.github.thebusybiscuit.cscorelib2</pattern>
+                            <shadedPattern>YOUR.PACKAGE.NAME.HERE.cscorelib2</shadedPattern>
+                        </relocation>
+                    </relocations>
+                    <filters>
+                            <filter>
+                                <artifact>com.github.thebusybiscuit:CS-CoreLib2</artifact>
+                                <includes>
+                                    <include>**/cscorelib2/config/**</include>
+                                    <include>**/cscorelib2/updater/**</include>
+                                    <include>**/cscorelib2/skull/**</include>
+                                    <include>**/cscorelib2/reflection/**</include>
+                                </includes>
+                            </filter>
+                    </filters>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 
     <dependencies>
         <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>1.15.2-R0.1-SNAPSHOT</version>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.16.5-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.thebusybiscuit</groupId>
+            <artifactId>CS-CoreLib2</artifactId>
+            <version>0.32.1</version>
         </dependency>
         <dependency>
             <groupId>com.github.TheBusyBiscuit</groupId>
@@ -69,16 +109,12 @@
         <dependency>
             <groupId>com.github.TheBusyBiscuit</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>73401bae08f527874f5e5ea9185fa541cdbb3de6</version>
+            <version>RC-27</version>
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
                     <groupId>io.github.thebusybiscuit</groupId>
                     <artifactId>cscorelib2</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.bstats</groupId>
-                    <artifactId>bstats-bukkit</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>

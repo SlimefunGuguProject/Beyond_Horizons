@@ -1,16 +1,17 @@
 package me.slimeyderp.beyondhorizons;
 
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-import me.mrCookieSlime.Slimefun.cscorelib2.updater.BukkitUpdater;
-import me.slimeyderp.beyondhorizons.materials.CustomItemStack;
-import me.slimeyderp.beyondhorizons.materials.Items;
-import me.slimeyderp.beyondhorizons.materials.RawAetherResource;
-import me.slimeyderp.beyondhorizons.materials.UnstableEtheriumResource;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.BukkitUpdater;
+import me.slimeyderp.beyondhorizons.Materials.CustomItemStack;
+import me.slimeyderp.beyondhorizons.Materials.Items;
+import me.slimeyderp.beyondhorizons.Materials.RawAetherResource;
+import me.slimeyderp.beyondhorizons.Materials.UnstableEtheriumResource;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.WorldType;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -21,13 +22,12 @@ public class BeyondHorizons extends JavaPlugin implements SlimefunAddon {
     @Override
     public void onEnable() {
         instance = this;
-
         registerItems();
         addingEnchantments();
         makingAetherWorld();
         new SpecialItemListener(this);
         new BukkitUpdater(this, this.getFile(), 370897);
-        getLogger().info("Beyond-Horizons has loaded Successfully!");
+        getLogger().info("Beyond-Horizons 附属插件成功加载,欢迎使用 By.Anvil");
     }
 
     @Override
@@ -46,8 +46,9 @@ public class BeyondHorizons extends JavaPlugin implements SlimefunAddon {
     }
 
     private void registerItems() {
-        Items.ETHERIUM.register(this);
+        instance =this;
         Items.UNSTABLE_ETHERIUM.register(this);
+        Items.ETHERIUM.register(this);
         Items.ETHERIAL_BALANCE_ROD.register(this);
         Items.AETHERIAL_WIND_STAFF.register(this);
         Items.ETHERIAL_PHANTOM_SWORD.register(this);
@@ -64,17 +65,9 @@ public class BeyondHorizons extends JavaPlugin implements SlimefunAddon {
     }
 
     private void addingEnchantments() {
-        ItemMeta etherialBalanceRod = CustomItemStack.ETHERIAL_BALANCE_ROD_STACK.getItemMeta();
-        etherialBalanceRod.addEnchant(Enchantment.KNOCKBACK, 5, true);
-        CustomItemStack.ETHERIAL_BALANCE_ROD_STACK.setItemMeta(etherialBalanceRod);
-
-        ItemMeta etherialPhantomSword = CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK.getItemMeta();
-        etherialPhantomSword.addEnchant(Enchantment.DAMAGE_ALL, 5, true);
-        CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK.setItemMeta(etherialPhantomSword);
-
-        ItemMeta aetherialWindStaff = CustomItemStack.AETHERIAL_WIND_STAFF_STACK.getItemMeta();
-        aetherialWindStaff.addEnchant(Enchantment.DURABILITY, 1, true);
-        CustomItemStack.AETHERIAL_WIND_STAFF_STACK.setItemMeta(aetherialWindStaff);
+        CustomItemStack.ETHERIAL_BALANCE_ROD_STACK.addUnsafeEnchantment(Enchantment.KNOCKBACK, 5);
+        CustomItemStack.ETHERIAL_PHANTOM_SWORD_STACK.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 5);
+        CustomItemStack.AETHERIAL_WIND_STAFF_STACK.addUnsafeEnchantment(Enchantment.DURABILITY, 2);
     }
 
     private void makingAetherWorld() {

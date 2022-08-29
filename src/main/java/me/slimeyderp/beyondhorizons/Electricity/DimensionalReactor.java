@@ -1,18 +1,19 @@
-package me.slimeyderp.beyondhorizons.electricity;
+package me.slimeyderp.beyondhorizons.Electricity;
 
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AReactor;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.implementation.items.electric.reactors.NuclearReactor;
+import io.github.thebusybiscuit.slimefun4.implementation.items.electric.reactors.Reactor;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AGenerator;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineFuel;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.mrCookieSlime.Slimefun.cscorelib2.skull.SkullItem;
-import me.slimeyderp.beyondhorizons.materials.CustomItemStack;
-import org.bukkit.Location;
+import me.slimeyderp.beyondhorizons.Materials.CustomItemStack;
 import org.bukkit.inventory.ItemStack;
+import io.github.thebusybiscuit.cscorelib2.skull.SkullItem;
 
-public class DimensionalReactor extends AReactor {
+public class DimensionalReactor extends AGenerator{
 
-    public DimensionalReactor(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public DimensionalReactor(ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
     }
 
@@ -33,11 +34,6 @@ public class DimensionalReactor extends AReactor {
     }
 
     @Override
-    public ItemStack getCoolant() {
-        return CustomItemStack.SUPER_CHARGED_COOLANT_CELL_STACK;
-    }
-
-    @Override
     public int getEnergyProduction() {
         return 1750;
     }
@@ -46,11 +42,4 @@ public class DimensionalReactor extends AReactor {
     public int getCapacity() {
         return 101004;
     }
-
-    @Override
-    public void extraTick(Location l) {
-        // This machine does not need to perform anything while ticking
-        // The Nether Star Reactor uses this method to generate the Wither Effect
-    }
-
 }

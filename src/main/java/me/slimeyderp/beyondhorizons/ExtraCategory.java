@@ -1,16 +1,15 @@
 package me.slimeyderp.beyondhorizons;
 
-import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 
 public final class ExtraCategory {
+    static NamespacedKey One=new NamespacedKey(BeyondHorizons.getInstance(), "beyond_horizons");
+    static CustomItemStack OneItem=new CustomItemStack(Material.HEART_OF_THE_SEA, "以太");
 
-    public static final Category CUSTOM_CATEGORY = new Category(
-        new NamespacedKey(BeyondHorizons.getInstance(), "beyond_horizons"),
-        new CustomItem(Material.HEART_OF_THE_SEA, "Beyond Horizons")
-    );
+    public static final ItemGroup CUSTOM_CATEGORY = new ItemGroup(One,OneItem);
 
     private ExtraCategory() {}
 }

@@ -1,12 +1,12 @@
-package me.slimeyderp.beyondhorizons.electricity;
+package me.slimeyderp.beyondhorizons.Electricity;
 
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
-import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.AContainer;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
-import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.slimeyderp.beyondhorizons.materials.CustomItemStack;
+import me.slimeyderp.beyondhorizons.Materials.CustomItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -15,7 +15,7 @@ import java.util.List;
 
 public class CoalDrill extends AContainer implements RecipeDisplayItem {
 
-    public CoalDrill(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public CoalDrill(ItemGroup category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
     }
 

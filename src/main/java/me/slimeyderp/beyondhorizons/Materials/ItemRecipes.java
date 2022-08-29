@@ -1,6 +1,6 @@
-package me.slimeyderp.beyondhorizons.materials;
+package me.slimeyderp.beyondhorizons.Materials;
 
-import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
